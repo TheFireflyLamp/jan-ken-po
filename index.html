@@ -5,89 +5,9 @@
 </head>
 <body>
     
-  <script>
- 	
-    
-      
-      let userInput = prompt("Please Enter Your Selection (Paper, Scissors or Rock)");
-      
-      
-    let jankenpo = ['Scissors', 'Paper', 'Rock']
-    function computerPlay() {
-        let random = jankenpo[Math.floor(Math.random()*jankenpo.length)];
-        return random;
-    }
-      
-    function playRound(playerSelection, computerSelection) {
-        if (computerSelection=='Scissors'){
-            switch(playerSelection) {
-                case 'scissors':
-                    text = "It's a draw!";
-                    return text;
-                    break;
-                case 'paper':
-                    text = "You lose! Scissors beats Paper!";
-                    return text;
-                    break;
-                case 'rock':
-                    text = "You win! Rock beats Scissors";
-                    break;
-                    return text;
-                default:
-                    text = "Please Enter Your Selection (Paper, Scissors or Rock)";
-                    return text;
-                        
-                                  }
-        }
-        else if (computerSelection=='Paper'){
-            switch(playerSelection) {
-                 case 'scissors':
-                    text = "You win! Scissors beats Paper";
-                    return text;
-                    break;
-                case 'paper':
-                    text = "It's a draw!";
-                    return text;
-                    break;
-                case 'rock':
-                    text = "You lose! Paper beats Rock!";
-                    return text;
-                    break;
-                default:
-                    text = "Please Enter Your Selection (Paper, Scissors or Rock)";
-                    return text;
-                                  }
-        }
-        else {
-            switch(playerSelection) {
-                 case 'scissors':
-                    text = "You lose! Rock beats Scissors";
-                    return text;
-                    break;
-                case 'paper':
-                    text = "You win! Paper beats Rock!";
-                    return text;
-                    break;
-                case 'rock':
-                    text = "It's a draw!";
-                    return text;
-                    break;
-                default:
-                    text = "Please Enter Your Selection (Paper, Scissors or Rock)";
-                    return text;
-        }
-    }
-    }
-    
-    let playerSelection = userInput.toLowerCase();
-    
-    let computerSelection = computerPlay();
-
-    console.log(computerSelection);
-    console.log(playerSelection)
-
-      console.log(playRound(playerSelection, computerSelection));
-    
+  <script src="game.js" type="text/javascript">
   </script>
+ 
+
 </body>
 </html>
