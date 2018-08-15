@@ -1,0 +1,54 @@
+html {
+  font-size: 10px;
+  background-color: beige;
+  background-size: cover;
+}
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.question {
+  display:block;
+  color: darkolivegreen;
+  font-size: 5em;
+  text-align: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons {
+  display: flex;
+  flex: 1;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  border: .4rem solid olive;
+  border-radius: .5em;
+  margin: 2em;
+  font-size: 2em;
+  padding: 2em .5em;
+  transition: all .1s ease;
+  width: 250px;
+  text-align: center;
+  color: darkgreen;
+  background: rgba(300,500,10,0.2);
+  text-shadow: 0 0 .7em lightgreen ;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+.status {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
