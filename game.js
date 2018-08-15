@@ -4,6 +4,7 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0;
 let userInput = "done";
+let winLose = "First to 5! Let's have a good match!";
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 const container = document.querySelector('#status');
@@ -23,29 +24,37 @@ function start() {window.addEventListener('click', input);}
 
 start();
 
+const wlose = document.createElement('div');
+  wlose.textContent = winLose;
+  container.appendChild(wlose);
+const compSel = document.createElement('div');
+  compSel.style.color = 'red' ;
+  container.appendChild(compSel);
+const yScore = document.createElement('div');
+  yScore.style.color = 'blue' ;
+  container.appendChild(yScore);
+const comScore = document.createElement('div');
+  comScore.style.color = 'red' ;
+  container.appendChild(comScore);
+const resText = document.createElement('div');
+  resText.style.color = 'green' ;
+  container.appendChild(resText);
+
+
+
 function game() {
+  winLose = "First to 5! Let's have a good match!";
+  wlose.textContent = winLose;
   let playerSelection = userInput.toLowerCase();
   let computerSelection = computerPlay();
   let resultText = playRound(playerSelection,computerSelection);
   console.log("Computer Selection: " + computerSelection);
-  const compSel = document.createElement('div');
-    compSel.style.color = 'red' ;
     compSel.textContent = "Computer Selection: " + computerSelection;
-  container.appendChild(compSel);
-  const yScore = document.createElement('div');
-    yScore.style.color = 'red' ;
     yScore.textContent = "Your Score: " + playerScore;
-  container.appendChild(yScore);
   console.log("Your Score: " + playerScore);
-  const comScore = document.createElement('div');
-    comScore.style.color = 'red' ;
-    comScore.textContent = "Computer Score: " + computerScore;
-  container.appendChild(comScore);
+   comScore.textContent = "Computer Score: " + computerScore;
   console.log("Computer Score: " + computerScore);
-  const resText = document.createElement('div');
-    resText.style.color = 'red' ;
-    resText.textContent = resultText;
-  container.appendChild(resText);
+  resText.textContent = resultText;
   console.log(resultText);
 
   if (!(playerScore>=5|| computerScore>=5)) {
@@ -53,32 +62,22 @@ function game() {
   } 
   else {
     if (playerScore>computerScore) {
-      console.log ("You won!");
-      if (confirm("Do you want to play again?")) {
-      playerScore=0;
-      computerScore=0;
-      round=0;
-      start();
+      playerScore = 0;
+      computerScore = 0;
+      round = 0;
+      winLose = "You Won! Congratulations! Let's play again sometime!";
+      console.log (winLose);
+      wlose.textContent = winLose;
       }
-      else {
-      playerScore=0;
-      computerScore=0;
-      console.log("Thank you for playing!");
-      }
-    }
+    
     else if (playerScore<computerScore) {
-      console.log("You Lost!");
-      if (confirm("Do you want to play again?")) {
-        playerScore=0;
-        computerScore=0;
-        round=0;
-        start();
-      }
-      else {
-        playerScore=0;
-        computerScore=0;
-        console.log("Thank you for playing!");
-      }
+      playerScore = 0;
+      computerScore = 0;
+      round = 0;
+      winLose = "You Lost! Challenge me to a rematch anytime!";
+      console.log(winLose);
+      wlose.textContent = winLose;
+    
     }
   }
   function computerPlay() {
