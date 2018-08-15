@@ -7,8 +7,16 @@ let userInput = "done";
 let winLose = "First to 5! Let's have a good match!";
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-const container = document.querySelector('#status');
-
+const wlose = document.querySelector('#wlose');
+  wlose.textContent = winLose;
+const compSel = document.querySelector('#compSel');
+  compSel.style.color = 'red' ;
+const yScore = document.querySelector('#yScore');
+  yScore.style.color = 'blue' ;
+const comScore = document.querySelector('#comScore');
+  comScore.style.color = 'red' ;
+const resText = document.querySelector('#resText');
+  resText.style.color = 'green' ;
 
 function removeTransition(e) {
     if (e.propertyName != 'transform') return;
@@ -23,24 +31,6 @@ function input(e) {
 function start() {window.addEventListener('click', input);}   
 
 start();
-
-const wlose = document.createElement('div');
-  wlose.textContent = winLose;
-  container.appendChild(wlose);
-const compSel = document.createElement('div');
-  compSel.style.color = 'red' ;
-  container.appendChild(compSel);
-const yScore = document.createElement('div');
-  yScore.style.color = 'blue' ;
-  container.appendChild(yScore);
-const comScore = document.createElement('div');
-  comScore.style.color = 'red' ;
-  container.appendChild(comScore);
-const resText = document.createElement('div');
-  resText.style.color = 'green' ;
-  container.appendChild(resText);
-
-
 
 function game() {
   winLose = "First to 5! Let's have a good match!";
