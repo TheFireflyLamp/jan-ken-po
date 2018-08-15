@@ -38,7 +38,11 @@ body,html {
   text-align: center;
   color: darkgreen;
   background: rgba(300,500,10,0.2);
-  text-shadow: 0 0 .7em lightgreen ;
+  text-shadow: 0 0 .7em white ;
+}
+
+.key:focus {
+  outline:none;
 }
 
 .playing {
