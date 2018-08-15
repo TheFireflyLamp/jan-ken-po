@@ -37,22 +37,6 @@ function updateViews() {
   thanks.textContent = thanksText;
 }
 
-function promptReset() {
-  if (confirm("Do you want to play again?")) {
-    computerSelection = "";
-    playerScore = 0;
-    computerScore = 0;
-    round = 0;
-    resultText = "";
-    thanksText = "";
-  }
-  else {
-    document.querySelectorAll('.key').forEach(node => node.onclick = null);
-    thanksText = "Thank you for playing!"
-  }
-  updateViews();
-}
-
 function endGame() {
   if (playerScore > computerScore) {
     thanksText = "You Won!"
@@ -62,8 +46,9 @@ function endGame() {
     thanksText = "You Lost!"
     console.log("You Lost!");
   }
+  document.querySelectorAll('.key').forEach(node => node.onclick = null);
+  thanksText = "Thank you for playing!"
   updateViews();
-  window.setTimeout(promptReset, 400);
 }
 
 function game(userInput) {
