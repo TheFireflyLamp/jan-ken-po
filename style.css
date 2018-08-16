@@ -1,12 +1,17 @@
 html {
   font-size: 10px;
-  background-color: beige;
+  background:beige ;
+  background-blend-mode: lighten;
   background-size: cover;
 }
 body,html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+div:focus {
+  outline: none;
 }
 
 .question {
@@ -45,6 +50,11 @@ body,html {
   outline:none;
 }
 
+.key:hover {
+  transform: scale(1.1);
+  border-color: cornflowerblue;
+}
+
 .playing {
   transform: scale(1.1);
   border-color: #ffc600;
@@ -55,4 +65,97 @@ body,html {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  position: relative;
+  top:-20px;
+  font-size: 1.7em;
+}
+
+.statustext {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top:100px;
+  text-align: center;
+  font-size: 1.7em;
+}
+.scores {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  
+}
+
+.yourscr, .compscr {
+  display:inline-block;
+  font-size: 2em;
+  border: .2rem solid gray;
+  border-radius: 1em;
+  transition: all .1s ease;
+  width: 250px;
+  padding: 5px;
+  text-align: center;
+  background: rgba(100,000,100,0.1);
+  text-shadow: 0 0 .7em white ;
+}
+
+.yourscr {
+  position: absolute;
+  left: 120px;
+}
+
+.compscr {
+  position: absolute;
+  right: 120px;
+}
+.Sel {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  
+}
+
+.yourSel, .compSel {
+  display:inline-block;
+  font-size: 1.7em;
+  transition: all .1s ease;
+  width: 250px;
+  height:30px;
+  padding: 10px 3px 3px 3px ;
+  text-align: center;
+  text-shadow: 0 0 .7em white ;
+}
+.yourSel {
+  position: relative;
+  left: 120px;
+}
+
+.compSel {
+  position: absolute;
+  right: 123px;
+}
+
+#resetButton {
+  text-align: center;
+  position: relative;
+  bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#resetButton button{
+  height:50px;
+  width: 160px;
+  border-radius: 5px;
+  font-size: 1.5em;
+}
+
+.reset:focus {
+  outline: none;
+}
+
+.reset:hover {
+  border-style: solid;
+  border-color: cornflowerblue;
+  border-width: 0.2rem;
+  color: red;
 }

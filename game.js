@@ -6,41 +6,62 @@ let round = 0;
 let userInput = "done";
 let winLose = "First to 5! Let's have a good match!";
 const keys = document.querySelectorAll('.key');
-keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
 const wlose = document.querySelector('#wlose');
   wlose.textContent = winLose;
 const compSel = document.querySelector('#compSel');
-  compSel.style.color = 'red' ;
+  compSel.style.color = 'maroon' ;
+  compSel.textContent = '???';
+const yourSel = document.querySelector('#yourSel');
+  yourSel.style.color = 'darkblue' ;
+  yourSel.textContent = '???';
 const yScore = document.querySelector('#yScore');
-  yScore.style.color = 'blue' ;
+  yScore.style.color = 'darkblue' ;
+  yScore.textContent = 'Your Score: 0';
 const comScore = document.querySelector('#comScore');
-  comScore.style.color = 'red' ;
+  comScore.style.color = 'maroon' ;
+  comScore.textContent = 'Computer Score: 0';
 const resText = document.querySelector('#resText');
   resText.style.color = 'green' ;
-
-function removeTransition(e) {
-    if (e.propertyName != 'transform') return;
-    this.classList.remove('playing');
-  }
-function input(e) {
-    userInput = e.target.id;
-    console.log(userInput);
-    e.target.classList.add('playing');
-    game();
-  }
-function start() {window.addEventListener('click', input);}   
+  resText.textContent = 'Let\'s go!';
+const resBut = document.querySelector('#reset');
+document.querySelectorAll('.reset').forEach(node => node.onclick = restart);
 
 start();
 
-function game() {
+function input(e) {
+    userInput = e.target.id;
+    console.log(userInput);
+    game(userInput);
+  }
+
+function start() {document.querySelectorAll('.key').forEach(node => node.onclick = input); }  
+
+function restart() {
+  playerScore=0;
+  computerScore=0;
+  round= 0;
+  wlose.textContent = winLose;
+  compSel.textContent = '???';
+  yourSel.textContent = '???';
+  yScore.textContent = 'Your Score: 0';
+  comScore.textContent = 'Computer Score: 0';
+  resText.textContent = 'Let\'s go!';
+  start();
+  
+}
+
+function game(userInput) {
   winLose = "First to 5! Let's have a good match!";
   wlose.textContent = winLose;
   let playerSelection = userInput.toLowerCase();
   let computerSelection = computerPlay();
   let resultText = playRound(playerSelection,computerSelection);
   console.log("Computer Selection: " + computerSelection);
-    compSel.textContent = "Computer Selection: " + computerSelection;
+    
     yScore.textContent = "Your Score: " + playerScore;
+  console.log ("Your Selection : " + userInput);
+
   console.log("Your Score: " + playerScore);
    comScore.textContent = "Computer Score: " + computerScore;
   console.log("Computer Score: " + computerScore);
@@ -52,25 +73,24 @@ function game() {
   } 
   else {
     if (playerScore>computerScore) {
-      playerScore = 0;
-      computerScore = 0;
-      round = 0;
-      winLose = "You Won! Congratulations! Let's play again sometime!";
+      winLose = "You Won! Congratulations! Here's your Mythical RPS Hero Badge!";
       console.log (winLose);
       wlose.textContent = winLose;
+      document.querySelectorAll('.key').forEach(node => node.onclick = null);
       }
     
     else if (playerScore<computerScore) {
-      playerScore = 0;
-      computerScore = 0;
-      round = 0;
       winLose = "You Lost! Challenge me to a rematch anytime!";
       console.log(winLose);
       wlose.textContent = winLose;
-    
+      document.querySelectorAll('.key').forEach(node => node.onclick = null);
     }
+     
   }
+ 
+  
   function computerPlay() {
+    return "Rock";
     let random = jankenpo[Math.floor(Math.random()*jankenpo.length)];
     return random;
   }
@@ -90,15 +110,21 @@ function game() {
       if (computerSelection=='Scissors'){
         switch(playerSelection) {
           case 'scissors':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "It's a draw!";
+            yourSel.textContent = "Your Selection: Scissors";
             break;
           case 'paper':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You lose! Scissors beats Paper!";
+            yourSel.textContent = "Your Selection: Paper";
             computerScore= computerScore+1;
             round = round+1;
             break;
           case 'rock':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You win! Rock beats Scissors";
+            yourSel.textContent = "Your Selection: Rock";
             playerScore = playerScore+1;
             round = round+1;
             break;
@@ -109,15 +135,21 @@ function game() {
       else if (computerSelection=='Paper'){
         switch(playerSelection) {
           case 'scissors':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You win! Scissors beats Paper";
+            yourSel.textContent = "Your Selection: Scissors";
             playerScore = playerScore+1;
             round = round+1;
             break;
           case 'paper':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "It's a draw!";
+            yourSel.textContent = "Your Selection: Paper";
             break;
           case 'rock':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You lose! Paper beats Rock!";
+            yourSel.textContent = "Your Selection: Rock";
             computerScore= computerScore+1;
             round = round+1;
             break;
@@ -128,17 +160,23 @@ function game() {
       else {
         switch(playerSelection) {
           case 'scissors':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You lose! Rock beats Scissors";
+            yourSel.textContent = "Your Selection: Scissors";
             computerScore= computerScore+1;
             round = round+1;
             break;
           case 'paper':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "You win! Paper beats Rock!";
+            yourSel.textContent = "Your Selection: Paper";
             playerScore = playerScore+1;
             round = round+1;
             break;
           case 'rock':
+            compSel.textContent = "Computer Selection: " + computerSelection;
             text = "It's a draw!";
+            yourSel.textContent = "Your Selection: Rock";
             break;
           default:
             text = "Please Enter Your Selection (Paper, Scissors or Rock)";
