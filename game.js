@@ -90,7 +90,6 @@ function game(userInput) {
  
   
   function computerPlay() {
-    return "Rock";
     let random = jankenpo[Math.floor(Math.random()*jankenpo.length)];
     return random;
   }
