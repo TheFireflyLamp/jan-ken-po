@@ -41,6 +41,7 @@ function restart() {
   playerScore=0;
   computerScore=0;
   round= 0;
+  winLose = "First to 5! Let's have a good match!";
   wlose.textContent = winLose;
   compSel.textContent = '???';
   yourSel.textContent = '???';
